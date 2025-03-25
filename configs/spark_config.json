@@ -1,0 +1,8 @@
+{
+  "spark.app.name": "LoanDefaultPipeline",
+  "spark.master": "local[*]",
+  "spark.sql.shuffle.partitions": "8",
+  "spark.executor.memory": "4G",
+  "spark.driver.memory": "2G",
+  "spark.sql.execution.arrow.enabled": "true"
+}
