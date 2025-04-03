@@ -58,7 +58,14 @@ def transform_data():
      .option("header", True)
      .save("data/processed/cleaned_data/"))
 
+    return df_cleaned
+
+def load_to_db(df, database, table_name):
+    url = "jdbc:postgresql://127.0.0.1:5432/projects"
+    properties = {"user": "postgres","driver": "org.postgresql.Driver"}
+    df.write.jdbc(url = url, table = table_name, mode = 'append', properties = properties)
 if __name__ == "__main__":
-    transform_data()
+    df = transform_data()
+    load_to_db(df, "projects", "loan_applications_etl_pipeline.loan_applications")
 
 

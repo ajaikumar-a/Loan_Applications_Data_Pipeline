@@ -15,7 +15,8 @@ def create_spark_session():
     spark_builder = (SparkSession
                      .builder
                      .appName([config["spark.app.name"]])
-                     .config("spark.hadoop.io.nativeio.NativeIO.disable", "true"))
+                     .config("spark.hadoop.io.nativeio.NativeIO.disable", "true")
+                     .config("spark.driver.extraClassPath", "C:\spark-3.5.5\spark-3.5.5-bin-hadoop3\jars\postgresql-42.7.5.jar"))
 
     for key, value in config.items():
         spark_builder = spark_builder.config(key, value)
